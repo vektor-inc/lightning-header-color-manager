@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Lightning Header Color Manager
- * Version: 0.0.0
+ * Version: 0.0.1
  * Author: Vektor,Inc.
  * Description:
  * License: GPL2
