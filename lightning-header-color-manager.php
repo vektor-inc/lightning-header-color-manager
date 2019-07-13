@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Lightning Header Color Manager
- * Version: 0.0.1
+ * Version: 0.1.0
  * Author: Vektor,Inc.
- * Description:
+ * Description:Lightningのヘッダー背景色とテキストカラーを変更するプラグインです。デザインスキン「Origin」と「Variety」でのみ有効です。無保証ですので自己責任でご利用ください。
  * License: GPL2
  * Author URI: http://www.vektor-inc.co.jp
 ** /
