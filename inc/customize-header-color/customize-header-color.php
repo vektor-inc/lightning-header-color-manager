@@ -108,6 +108,7 @@ function lightning_print_css_header() {
 	if ( ! empty( $options['color_header_text'] ) ) {
 		$color_header_text = esc_html( $options['color_header_text'] );
 		$dynamic_css      .= '
+			.navbar-brand a { color: ' . $color_header_text . ' ;}
 			@media (min-width: 992px){
 				.headerTop,
 				.headerTop li a,
