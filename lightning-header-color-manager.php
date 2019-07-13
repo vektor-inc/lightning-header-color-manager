@@ -40,7 +40,7 @@ function lhcm_plugin_active() {
 add_action( 'plugins_loaded', 'lhcm_skin_loadfunction' );
 function lhcm_skin_loadfunction() {
 	$skin = get_option( 'lightning_design_skin' );
-	if ( $skin == 'origin' || $skin == 'variety' ) {
+	if ( $skin == '' || $skin == 'origin' || $skin == 'variety' ) {
 		require plugin_dir_path( __FILE__ ) . 'inc/customize-header-color/customize-header-color.php';
 	}
 }
