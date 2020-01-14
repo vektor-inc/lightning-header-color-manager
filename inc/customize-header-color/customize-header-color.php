@@ -3,13 +3,16 @@ add_action( 'customize_register', 'lightning_customize_register_color' );
 function lightning_customize_register_color( $wp_customize ) {
 
 	$wp_customize->add_setting(
-		'color_header_subtitle', array(
+		'color_header_subtitle',
+		array(
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
 	$wp_customize->add_control(
 		new Custom_Html_Control(
-			$wp_customize, 'color_header_subtitle', array(
+			$wp_customize,
+			'color_header_subtitle',
+			array(
 				'label'            => '',
 				'section'          => 'lightning_design',
 				'type'             => 'text',
@@ -22,7 +25,8 @@ function lightning_customize_register_color( $wp_customize ) {
 
 	// color
 	$wp_customize->add_setting(
-		'lightning_theme_options[color_header_text]', array(
+		'lightning_theme_options[color_header_text]',
+		array(
 			'default'           => '',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -31,7 +35,9 @@ function lightning_customize_register_color( $wp_customize ) {
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
-			$wp_customize, 'color_header_text', array(
+			$wp_customize,
+			'color_header_text',
+			array(
 				'label'    => __( 'Header Text Color', 'lightning-pro' ),
 				'section'  => 'lightning_design',
 				'settings' => 'lightning_theme_options[color_header_text]',
@@ -42,7 +48,8 @@ function lightning_customize_register_color( $wp_customize ) {
 
 	// Header Bg
 	$wp_customize->add_setting(
-		'lightning_theme_options[color_header_bg]', array(
+		'lightning_theme_options[color_header_bg]',
+		array(
 			'default'           => '',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -51,7 +58,9 @@ function lightning_customize_register_color( $wp_customize ) {
 	);
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
-			$wp_customize, 'color_header_bg', array(
+			$wp_customize,
+			'color_header_bg',
+			array(
 				'label'    => __( 'Header Background Color', 'lightning-pro' ),
 				'section'  => 'lightning_design',
 				'settings' => 'lightning_theme_options[color_header_bg]',
@@ -62,15 +71,17 @@ function lightning_customize_register_color( $wp_customize ) {
 }
 
 
-/* 色の出力 */
-/*-------------------------------------------*/
-/*	Print head
+/*
+ 色の出力 */
+/*
+-------------------------------------------*/
+/*
+  Print head
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_print_css_header', 3 );
 function lightning_print_css_header() {
 	$options     = get_option( 'lightning_theme_options' );
 	$dynamic_css = '';
-
 
 	if ( ! empty( $options['color_header_bg'] ) ) {
 		$color_header_bg = esc_html( $options['color_header_bg'] );
@@ -82,7 +93,7 @@ function lightning_print_css_header() {
 		// origin2 ///////////////////
 		$skin = get_option( 'lightning_design_skin' );
 		if ( $skin == 'origin2' ) {
-			$dynamic_css    .= '
+			$dynamic_css .= '
 			@media (min-width: 992px){
 				.header_scrolled .gMenu_outer { 
 					background-color:' . $color_header_bg . ' ; 
