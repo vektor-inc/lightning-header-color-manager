@@ -71,15 +71,37 @@ function lightning_print_css_header() {
 	$options     = get_option( 'lightning_theme_options' );
 	$dynamic_css = '';
 
+	$color_header_bg = esc_html( $options['color_header_bg'] );
+	// origin2 ///////////////////
+	$skin = get_option( 'lightning_design_skin' );
+	if ( $skin == 'origin2' ) {
+		$dynamic_css    .= '
+		@media (min-width: 992px){
+			.header_scrolled .gMenu_outer { 
+				background-color:' . $color_header_bg . ' ; 
+			}
+		}';
+	}
+
+
 	if ( ! empty( $options['color_header_bg'] ) ) {
 		$color_header_bg = esc_html( $options['color_header_bg'] );
-		$dynamic_css    .= '.headerTop,.siteHeader { background-color:' . $color_header_bg . ' ; }';
+		$dynamic_css    .= '
+			.headerTop,.siteHeader { 
+				background-color:' . $color_header_bg . ' ; 
+			}';
 
 		if ( function_exists( 'lightning_check_color_mode' ) && lightning_check_color_mode( $color_header_bg ) == 'light' ) {
 
 			// Light Color ///////////////////
 
-			$dynamic_css .= '.headerTop { border-bottom:1px solid rgba(0,0,0,0.1); }';
+			$dynamic_css .= '
+			.headerTop { 
+				border-bottom:1px solid rgba(0,0,0,0.1); 
+			}
+			.header_scrolled .gMenu>li{ 
+				border-left: 1px solid rgba(0,0,0,0.1);
+			}';
 
 		} else {
 
@@ -88,6 +110,9 @@ function lightning_print_css_header() {
 			$dynamic_css .= '
 				.headerTop {
 					border-bottom:1px solid rgba(255,255,255,0.2);
+				}
+				.header_scrolled .gMenu>li{
+					border-left:1px solid rgba(255,255,255,0.2);
 				}
 				.headerTop_contactBtn .btn.btn-primary {
 					color:' . $color_header_bg . ';
@@ -98,9 +123,19 @@ function lightning_print_css_header() {
 					opacity: 0.9;
 				}';
 			// Mobile Nav Button
-			$dynamic_css .= '.vk-mobile-nav-menu-btn {
+			$dynamic_css .= '
+			.vk-mobile-nav-menu-btn {
 				border-color:rgba(255,255,255,0.8);
-				background-image: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/images/vk-menu-btn-white.svg);
+				background-image: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-btn-white.svg);
+			}
+			.gMenu .acc-btn{
+				background-image: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
+			}
+			.gMenu .acc-btn.acc-btn-close {
+				background-image: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
+			}
+			.vk-menu-acc .acc-btn{
+				border: 1px solid #fff;
 			}';
 		}
 	}
@@ -112,7 +147,8 @@ function lightning_print_css_header() {
 			@media (min-width: 992px){
 				.headerTop,
 				.headerTop li a,
-				ul.gMenu>li>a { color: ' . $color_header_text . ' ; }
+				ul.gMenu>li>a,
+				ul.gMenu>li>a:hover { color: ' . $color_header_text . ' ; }
 			} /* @media (min-width: 992px) */
 			';
 	}
