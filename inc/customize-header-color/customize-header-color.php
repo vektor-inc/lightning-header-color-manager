@@ -71,18 +71,6 @@ function lightning_print_css_header() {
 	$options     = get_option( 'lightning_theme_options' );
 	$dynamic_css = '';
 
-	$color_header_bg = esc_html( $options['color_header_bg'] );
-	// origin2 ///////////////////
-	$skin = get_option( 'lightning_design_skin' );
-	if ( $skin == 'origin2' ) {
-		$dynamic_css    .= '
-		@media (min-width: 992px){
-			.header_scrolled .gMenu_outer { 
-				background-color:' . $color_header_bg . ' ; 
-			}
-		}';
-	}
-
 
 	if ( ! empty( $options['color_header_bg'] ) ) {
 		$color_header_bg = esc_html( $options['color_header_bg'] );
@@ -90,6 +78,17 @@ function lightning_print_css_header() {
 			.headerTop,.siteHeader { 
 				background-color:' . $color_header_bg . ' ; 
 			}';
+
+		// origin2 ///////////////////
+		$skin = get_option( 'lightning_design_skin' );
+		if ( $skin == 'origin2' ) {
+			$dynamic_css    .= '
+			@media (min-width: 992px){
+				.header_scrolled .gMenu_outer { 
+					background-color:' . $color_header_bg . ' ; 
+				}
+			}';
+		}
 
 		if ( function_exists( 'lightning_check_color_mode' ) && lightning_check_color_mode( $color_header_bg ) == 'light' ) {
 
