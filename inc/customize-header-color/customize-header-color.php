@@ -45,7 +45,7 @@ function lightning_customize_register_color( $wp_customize ) {
 			)
 		)
 	);
-	
+
 	// color
 	$wp_customize->add_setting(
 		'lightning_theme_options[color_header_text]',
@@ -135,7 +135,8 @@ function lightning_print_css_header() {
 			// Mobile Nav Button
 			$dynamic_css .= '
 			.vk-mobile-nav-menu-btn {
-				border-color:rgba(255,255,255,0.8);
+				border-color:rgba(255,255,255,0.6);
+				background-color:rgba(0,0,0,0.3);
 				background-image: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-btn-white.svg);
 			}
 			.gMenu .acc-btn{
