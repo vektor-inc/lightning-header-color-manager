@@ -82,7 +82,7 @@ $options = get_option( 'lightning_theme_options' );
 if ( ! empty( $options['enqueue_point_footer'] ) ) {
 	add_action( 'wp_footer', 'lightning_print_css_header', 50 );
 } else {
-	add_action( 'wp_header', 'lightning_print_css_header', 26 );
+	add_action( 'wp_head', 'lightning_print_css_header', 26 );
 }
 
 function lightning_print_css_header() {
