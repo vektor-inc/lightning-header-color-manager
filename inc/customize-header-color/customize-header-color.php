@@ -78,7 +78,13 @@ function lightning_customize_register_color( $wp_customize ) {
 /*
   Print head
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_print_css_header', 3 );
+$options = get_option( 'lightning_theme_options' );
+if ( ! empty( $options['enqueue_point_footer'] ) ) {
+	add_action( 'wp_footer', 'lightning_print_css_header', 50 );
+} else {
+	add_action( 'wp_header', 'lightning_print_css_header', 26 );
+}
+
 function lightning_print_css_header() {
 	$options     = get_option( 'lightning_theme_options' );
 	$dynamic_css = '';
@@ -171,7 +177,10 @@ function lightning_print_css_header() {
 		$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
 		// Change multiple spaces to single space
 		$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
-		wp_add_inline_style( 'lightning-design-style', $dynamic_css );
+
+		// wp_add_inline_style( 'lightning-design-style', $dynamic_css );
+		echo '<style id="lightning-color-custom-for-plugins" type="text/css">' . $dynamic_css . '</style>';
+		
 	}
 
 }
