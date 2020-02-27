@@ -96,7 +96,16 @@ function lightning_print_css_header() {
 				background-color:' . $color_header_bg . ' ; 
 			}';
 
-
+		// origin2 ///////////////////
+		$skin = get_option( 'lightning_design_skin' );
+		if ( $skin == 'origin2' ) {
+			$dynamic_css .= '
+			@media (min-width: 992px){
+				.header_scrolled .gMenu_outer { 
+					background-color:' . $color_header_bg . ' ; 
+				}
+			}';
+		}
 
 		if ( function_exists( 'lightning_check_color_mode' ) && lightning_check_color_mode( $color_header_bg ) == 'light' ) {
 
@@ -146,17 +155,6 @@ function lightning_print_css_header() {
 				border: 1px solid #fff;
 			}';
 		}
-	}
-
-	// origin2 ///////////////////
-	$skin = get_option( 'lightning_design_skin' );
-	if ( $skin == 'origin2' ) {
-		$dynamic_css .= '
-		@media (min-width: 992px){
-			.header_scrolled .gMenu_outer { 
-				background-color:' . $color_header_bg . ' ; 
-			}
-		}';
 	}
 
 	if ( ! empty( $options['color_header_text'] ) ) {
