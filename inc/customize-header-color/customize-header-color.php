@@ -98,7 +98,7 @@ function lightning_print_css_header() {
 
 		// origin2 ///////////////////
 		$skin = get_option( 'lightning_design_skin' );
-		if ( $skin == 'origin2' ) {
+		if ( $skin == '' || $skin == 'origin2' ) {
 			$dynamic_css .= '
 			@media (min-width: 992px){
 				.header_scrolled .gMenu_outer { 
