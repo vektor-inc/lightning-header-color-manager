@@ -13,12 +13,12 @@ function lightning_customize_register_color( $wp_customize ) {
 			$wp_customize,
 			'color_header_subtitle',
 			array(
-				'label'            => '',
-				'section'          => 'lightning_design',
+				'label'            => __( 'Header Color', 'lightning-pro' ),
+				'section'          => 'lightning_header',
 				'type'             => 'text',
-				'custom_title_sub' => __( 'Header Color', 'lightning-pro' ),
+				'custom_title_sub' => '',
 				'custom_html'      => '',
-				'priority'         => 601,
+				'priority'         => 0,
 			)
 		)
 	);
@@ -39,9 +39,9 @@ function lightning_customize_register_color( $wp_customize ) {
 			'color_header_bg',
 			array(
 				'label'    => __( 'Header Background Color', 'lightning-pro' ),
-				'section'  => 'lightning_design',
+				'section'  => 'lightning_header',
 				'settings' => 'lightning_theme_options[color_header_bg]',
-				'priority' => 601,
+				'priority' => 0,
 			)
 		)
 	);
@@ -62,9 +62,9 @@ function lightning_customize_register_color( $wp_customize ) {
 			'color_header_text',
 			array(
 				'label'    => __( 'Header Text Color', 'lightning-pro' ),
-				'section'  => 'lightning_design',
+				'section'  => 'lightning_header',
 				'settings' => 'lightning_theme_options[color_header_text]',
-				'priority' => 601,
+				'priority' => 0,
 			)
 		)
 	);
@@ -180,7 +180,7 @@ function lightning_print_css_header() {
 
 		// wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 		echo '<style id="lightning-color-custom-for-plugins" type="text/css">' . $dynamic_css . '</style>';
-		
+
 	}
 
 }
